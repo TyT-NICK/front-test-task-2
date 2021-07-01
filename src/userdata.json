@@ -1,0 +1,14 @@
+[
+  {
+    "login": "testLogin",
+    "password": "testPassword",
+    "favorites": [
+      {
+        "request": "testRequest",
+        "name": "testName",
+        "order": "relevance",
+        "maxResults": "12"
+      }
+    ]
+  }
+]
