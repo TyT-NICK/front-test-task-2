@@ -1,28 +1,28 @@
 import { useCallback, useEffect, useState } from 'react'
+import userData from '../userdata.json'
 
-const STORAGE_NAME = 'userdata'
+const STORAGE_NAME = 'currentUser'
 
 const useAuth = () => {
-  const [login, setLogin] = useState(null)
+  const [userLogin, setUserLogin] = useState(localStorage.getItem(STORAGE_NAME))
 
-  const signIn = useCallback((userdata) => {
-    setLogin(userdata)
+  const signIn = useCallback((login, password) => {
+    const user = userData.find((x) => x.login === login)
 
-    localStorage.setItem(STORAGE_NAME, userdata)
+    if (!user) throw new Error(`Неверный логин`)
+    if (user.password !== password) throw new Error(`Неверный пароль`)
+
+    setUserLogin(login)
+    localStorage.setItem(STORAGE_NAME, login)
   }, [])
 
   const signOut = () => {
-    setLogin(null)
+    setUserLogin(null)
 
     localStorage.removeItem(STORAGE_NAME)
   }
 
-  useEffect(() => {
-    const userdata = localStorage.getItem(STORAGE_NAME)
-    if (userdata) signIn(userdata)
-  }, [])
-
-  return { login, signIn, signOut }
+  return { login: userLogin, signIn, signOut }
 }
 
 export default useAuth
