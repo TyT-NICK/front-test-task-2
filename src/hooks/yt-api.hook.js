@@ -12,6 +12,7 @@ const useYTApi = () => {
     const queryString = new URL('https://youtube.googleapis.com/youtube/v3/videos')
     queryString.searchParams.set('id', videoId)
     queryString.searchParams.set('part', part)
+    queryString.searchParams.set('key', apiKey)
 
     try {
       const response = await fetch(queryString)
