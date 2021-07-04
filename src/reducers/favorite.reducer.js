@@ -7,6 +7,11 @@ export const FAVORITE_ACTION_TYPES = {
   DELETE_FAVORITE: 'items/delete-favorite',
 }
 
+export const FavoriteContext = React.createContext({
+  state: {},
+  dispatch: () => {},
+})
+
 const handleAction = {
   [FAVORITE_ACTION_TYPES.ADD_FAVORITE]: (state, payload) => {
     const { login, item } = payload
