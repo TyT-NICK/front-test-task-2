@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react'
 
-const apiKey = 'AIzaSyBcB235f7RSIijZELkqmyN_Vk5UArL146k'
+const apiKey = 'AIzaSyCt0jMegkduXb1KWIn89Ducjhcba5O0CIw'
 
 const useYTApi = () => {
   const [loading, setLoading] = useState(false)
