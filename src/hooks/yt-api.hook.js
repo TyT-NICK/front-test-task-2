@@ -3,10 +3,32 @@ import { useCallback, useState } from 'react'
 const apiKey = 'AIzaSyBcB235f7RSIijZELkqmyN_Vk5UArL146k'
 
 const useYTApi = () => {
-  const [isLoading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  const request = useCallback(async (searchString, maxResults = 12, order = 'relevance') => {
+  const videoRequest = useCallback(async (videoId, part = 'statistics') => {
+    setLoading(true)
+
+    const queryString = new URL('https://youtube.googleapis.com/youtube/v3/videos')
+    queryString.searchParams.set('id', videoId)
+    queryString.searchParams.set('part', part)
+
+    try {
+      const response = await fetch(queryString)
+      const data = await response.json()
+      if (!response.ok) throw new Error(data.error.message)
+
+      setLoading(false)
+      return data.items[0]
+    } catch (e) {
+      setLoading(false)
+      setError(e.message)
+
+      throw e
+    }
+  }, [])
+
+  const searchRequest = useCallback(async (searchString, maxResults = 12, order = 'relevance') => {
     setLoading(true)
 
     const queryString = new URL('https://youtube.googleapis.com/youtube/v3/search')
@@ -19,7 +41,6 @@ const useYTApi = () => {
 
     try {
       const response = await fetch(queryString)
-
       const data = await response.json()
       if (!response.ok) throw new Error(data.error.message)
 
@@ -33,7 +54,7 @@ const useYTApi = () => {
     }
   }, [])
 
-  return [request, isLoading, error]
+  return { searchRequest, loading, error, videoRequest }
 }
 
 export default useYTApi
