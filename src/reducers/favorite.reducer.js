@@ -1,3 +1,5 @@
+import React from 'react'
+
 const STORAGE_NAME = 'userFavorites'
 
 export const FAVORITE_ACTION_TYPES = {
