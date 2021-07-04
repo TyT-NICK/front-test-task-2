@@ -26,7 +26,8 @@ const handleAction = {
   [FAVORITE_ACTION_TYPES.DELETE_FAVORITE]: (state, payload) => {
     const { login, index } = payload
 
-    const newArray = [...state[login]].splice(index, 1)
+    const newArray = [...state[login]]
+    newArray.splice(index, 1)
 
     return { ...state, [login]: newArray }
   },
