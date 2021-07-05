@@ -7,7 +7,7 @@ const SignOutPage = () => {
 
   useEffect(() => {
     signOut()
-  }, [])
+  }, [signOut])
 
   return <Redirect to="auth" />
 }

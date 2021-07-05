@@ -1,12 +1,23 @@
-import { Card, Form, Input, Button } from 'antd'
+import { Card, Form, Input, Button, message } from 'antd'
 import { useForm } from 'antd/lib/form/Form'
+import { useHistory } from 'react-router-dom'
+import useAuth from '../hooks/auth.hook'
 import sibDevLogo from '../resources/sibdev-logo.png'
 
 const AuthForm = () => {
   const [form] = useForm()
+  const { signIn } = useAuth()
+  const history = useHistory()
 
   const onFinish = (values) => {
-    console.log(values)
+    const { login, password } = values
+
+    try {
+      signIn(login, password)
+      history.push('/search')
+    } catch (e) {
+      message.error(e.message)
+    }
   }
 
   const cardHead = (
@@ -33,7 +44,7 @@ const AuthForm = () => {
           label="Пароль"
           rules={[{ required: true, message: 'Необходимо указать пароль' }]}
         >
-          <Input />
+          <Input.Password />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit">
