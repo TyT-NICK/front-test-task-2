@@ -1,0 +1,12 @@
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --col-bg-main: #eaeaea;
+  --col-bg-accent: #ffffff;
+}
