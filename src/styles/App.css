@@ -1,0 +1,278 @@
+.page {
+  background: var(--col-bg-main);
+  width: 100vw;
+  height: 100vh;
+  min-width: 480px;
+}
+
+.page-auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page__content {
+  margin: 0 auto;
+  max-width: 1024px;
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.form-auth {
+  max-width: 350px;
+}
+
+.form-favorite {
+  max-width: 450px;
+}
+
+.card__pretitle {
+  margin-bottom: 15px;
+}
+
+.header {
+  height: 100%;
+}
+
+.header__logo {
+  float: left;
+  height: 100%;
+  padding: 10px;
+}
+
+.header__logo > img {
+  display: block;
+  height: 100%;
+}
+
+.header__signout {
+  text-align: right;
+}
+
+.button-favorite {
+  font-family: 'Material Icons';
+  font-size: 16px !important;
+}
+
+.search {
+  margin-bottom: 15px;
+}
+
+.search-empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  margin-top: -120px;
+}
+
+.search-empty h1 {
+  text-align: center;
+  font-size: 36px;
+  padding-bottom: 24px;
+}
+
+.search-string {
+  font-weight: 600;
+}
+
+.result-counter {
+  display: inline-block;
+  padding-left: 15px;
+  opacity: 0.5;
+}
+
+.switch__ico {
+  font-family: 'Material Icons';
+  font-size: 18px;
+}
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  /* overflow: hidden; */
+}
+
+.video {
+  display: flex;
+  flex-direction: column;
+}
+
+.video__preview {
+  max-height: 150px;
+  width: 100%;
+  position: relative;
+  padding-bottom: 60%;
+  margin-bottom: 7px;
+}
+
+.video__preview img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.video__title {
+  line-height: 1.2em;
+  font-size: 1.3em;
+  max-height: 2.6em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.video__channel,
+.video__views-count {
+  opacity: 0.7;
+  margin-bottom: 0;
+}
+
+.list-view {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.list-view .video + .video {
+  margin-top: 25px;
+}
+
+.list-view .video {
+  flex-direction: row;
+  justify-content: space-between;
+  height: 100px;
+}
+
+.list-view .video__preview {
+  flex: 0 0 150px;
+  height: 100%;
+  padding-bottom: 0;
+}
+
+.list-view .video__info {
+  flex: 1 1 auto;
+  margin-left: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.list-view .video__channel,
+.list-view .video__views-count {
+  font-size: 1.1em;
+}
+
+.list-view .video__title {
+  margin-bottom: auto;
+  line-height: 1.3em;
+}
+
+@media screen and (max-width: 990px) {
+  .items-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media screen and (max-width: 780px) {
+  .items-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 570px) {
+  .items-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .list-view .video__info {
+    font-size: 0.9em;
+  }
+}
+
+.favorite-item__title {
+  margin-bottom: 0;
+  font-size: 18px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.favorite-item__extra {
+  margin: 0 25px;
+  opacity: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.favorite-item:hover .favorite-item__extra {
+  opacity: 0.5;
+}
+
+.favorite-item__actions {
+  margin-left: auto;
+}
+
+.favorite-item__delete {
+  margin-left: 15px;
+  color: red;
+}
+
+@media screen and (max-width: 640px) {
+  .favorite-item {
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+
+  .favorite-item * + * {
+    margin-top: 25px;
+  }
+
+  .favorite-item__extra {
+    opacity: 0.5;
+  }
+
+  .favorite-item__actions {
+    margin: 0 auto;
+  }
+}
+
+/* 
+  AntD
+*/
+
+.ant-card-head-title {
+  text-align: center;
+}
+
+.ant-col {
+  height: 100%;
+}
+
+.ant-layout-header {
+  background: var(--col-bg-accent);
+}
+
+.ant-layout-content {
+  padding: 25px 50px;
+  overflow-y: auto;
+}
+
+.ant-menu {
+  background: none;
+}
+
+.ant-list-item {
+  background: var(--col-bg-accent);
+  padding: 12px 25px;
+}
+
+.ant-modal-title {
+  text-align: center;
+}

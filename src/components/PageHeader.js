@@ -4,9 +4,8 @@ import logo from '../resources/sibdev-logo.png'
 
 const { Header } = Layout
 const PageHeader = () => {
-  const location = useLocation()
+  const path = useLocation().pathname
 
-  console.log(location.pathname)
   return (
     <Header>
       <Row className="header page__content" justify="space-between">
@@ -16,7 +15,7 @@ const PageHeader = () => {
           </Link>
         </Col>
         <Col flex="auto">
-          <Menu mode="horizontal" selectedKeys={[location.pathname]}>
+          <Menu mode="horizontal" selectedKeys={[path]}>
             <Menu.Item key={'/search'}>
               <Link to={'/search'}>Поиск</Link>
             </Menu.Item>
