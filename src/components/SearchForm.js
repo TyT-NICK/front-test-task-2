@@ -55,9 +55,10 @@ const SearchForm = (props) => {
           size="large"
           onSearch={onSearch}
           onChange={searchChangeHandler}
+          defaultValue={initialValue}
           placeholder="Что хотите посмотреть?"
           enterButton="Найти"
-          {...loading}
+          loading={loading}
           suffix={<AddToFavButton onAddToFavoriteClick={addToFavoriteClickHandler} />}
         />
       </Row>

@@ -1,19 +1,25 @@
-import { Row, Col, Switch } from 'antd'
 import { useState } from 'react'
+import { Row, Col, Switch } from 'antd'
 
-const SearchResultItem = ({ id, snippet }) => {
-  const { title, previewUrl, channelTitle, viewsCount } = snippet
+const SearchResultItem = ({ id, snippet, viewCount }) => {
+  const { title, thumbnails, channelTitle } = snippet
+
   return (
-    <div className="video">
+    <a
+      href={`https://www.youtube.com/watch?v=${id.videoId}`}
+      target="_blank"
+      rel="noreferrer"
+      className="video"
+    >
       <div className="video__preview">
-        <img src={previewUrl} alt="" />
+        <img src={thumbnails.high.url} alt="" />
       </div>
       <div className="video__info">
         <h3 className="video__title">{title}</h3>
         <p className="video__channel">{channelTitle}</p>
-        <p className="video__views-count">{viewsCount} просмотров</p>
+        <p className="video__views-count">{viewCount} просмотров</p>
       </div>
-    </div>
+    </a>
   )
 }
 
@@ -23,8 +29,6 @@ const SearchResult = ({ searchString, items }) => {
   const viewChangeHandler = (checked) => {
     setListView(checked)
   }
-
-  // console.table(items)
 
   return (
     <div className="search-result page__content">
